@@ -15,6 +15,10 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Hero's Catering custom variants
+        hero: "bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:scale-105 transition-all duration-300",
+        heroOutline: "bg-transparent border-2 border-primary-foreground text-primary-foreground rounded-full px-8 py-4 text-lg font-semibold hover:bg-primary-foreground hover:text-primary transition-all duration-300",
+        heroInverse: "bg-primary-foreground text-primary hover:bg-primary-foreground/90 rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:scale-105 transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
