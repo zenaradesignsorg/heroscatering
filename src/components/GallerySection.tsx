@@ -52,6 +52,8 @@ const GallerySection = () => {
                   className="w-full h-full object-cover"
                   loading="lazy"
                   decoding="async"
+                  width="400"
+                  height="400"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';

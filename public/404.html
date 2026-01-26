@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - Heroes Catering</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #2d5a3d 0%, #f5f0e8 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #2d5a3d;
+    }
+    .container {
+      text-align: center;
+      max-width: 600px;
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      font-size: 72px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #2d5a3d;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #666;
+      line-height: 1.6;
+    }
+    a {
+      display: inline-block;
+      background: #2d5a3d;
+      color: white;
+      padding: 12px 32px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    a:hover {
+      background: #1e3d2a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>404</h1>
+    <h2>Page Not Found</h2>
+    <p>The page you're looking for doesn't exist. Let's get you back to our delicious food!</p>
+    <a href="/">Go to Homepage</a>
+  </div>
+  <script>
+    // Redirect to home after 5 seconds
+    setTimeout(function() {
+      window.location.href = '/';
+    }, 5000);
+  </script>
+</body>
+</html>

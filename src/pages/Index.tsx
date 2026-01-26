@@ -12,6 +12,12 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   useEffect(() => {
+    // Analytics placeholder - Add analytics tracking code here if needed
+    // Example: Google Analytics, Plausible, etc.
+    // if (typeof window !== 'undefined' && window.gtag) {
+    //   window.gtag('config', 'G-XXXXXXXXXX');
+    // }
+
     // Handle smooth scrolling for all anchor links
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;

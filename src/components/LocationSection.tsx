@@ -172,6 +172,8 @@ const LocationSection = () => {
                 alt="Heroes Catering store interior in GTA Mall showing food display counter"
                 className="w-full h-auto object-cover"
                 loading="lazy"
+                width="800"
+                height="600"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
