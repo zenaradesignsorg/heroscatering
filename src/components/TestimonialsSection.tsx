@@ -60,43 +60,44 @@ const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => {
             const { ref: cardRef, isVisible: cardVisible } = useScrollAnimation({ threshold: 0.1 });
             return (
-            <div 
-              key={index}
-              ref={cardRef}
-              className={`card-elevated p-5 sm:p-6 lg:p-8 flex flex-col animate-on-scroll ${cardVisible ? 'visible' : ''}`}
-              style={{ transitionDelay: `${index * 0.1}s` }}
-            >
-              {/* Quote Icon */}
-              <div className="mb-4">
-                <Quote className="w-8 h-8 text-primary/30" />
-              </div>
-              
-              {/* Rating */}
-              <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    className="w-5 h-5 fill-accent text-accent" 
-                  />
-                ))}
-              </div>
-              
-              {/* Testimonial Text */}
-              <p className="text-muted-foreground mb-6 flex-grow leading-relaxed">
-                "{testimonial.text}"
-              </p>
-              
-              {/* Customer Info */}
-              <div className="border-t border-border pt-4">
-                <p className="font-semibold text-foreground">
-                  {testimonial.name}
+              <div 
+                key={index}
+                ref={cardRef}
+                className={`card-elevated p-5 sm:p-6 lg:p-8 flex flex-col animate-on-scroll ${cardVisible ? 'visible' : ''}`}
+                style={{ transitionDelay: `${index * 0.1}s` }}
+              >
+                {/* Quote Icon */}
+                <div className="mb-4">
+                  <Quote className="w-8 h-8 text-primary/30" />
+                </div>
+                
+                {/* Rating */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star 
+                      key={i} 
+                      className="w-5 h-5 fill-accent text-accent" 
+                    />
+                  ))}
+                </div>
+                
+                {/* Testimonial Text */}
+                <p className="text-muted-foreground mb-6 flex-grow leading-relaxed">
+                  "{testimonial.text}"
                 </p>
-                <p className="text-sm text-muted-foreground">
-                  {testimonial.location}
-                </p>
+                
+                {/* Customer Info */}
+                <div className="border-t border-border pt-4">
+                  <p className="font-semibold text-foreground">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonial.location}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         
         {/* Divider */}
