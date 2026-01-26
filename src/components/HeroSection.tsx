@@ -20,8 +20,8 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 container-width section-padding text-center">
         {/* Logo / Brand */}
-        <div className="mb-12 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-          <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold tracking-tight leading-tight drop-shadow-2xl" style={{ 
+        <div className="mb-8 md:mb-12 animate-fade-in px-4" style={{ animationDelay: "0.1s" }}>
+          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold tracking-tight leading-tight drop-shadow-2xl" style={{ 
             textShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3)',
             letterSpacing: '-0.02em'
           }}>
@@ -32,7 +32,7 @@ const HeroSection = () => {
         
         {/* Main Headline */}
         <h1 
-          className="heading-display text-primary-foreground mb-6 animate-fade-in-up"
+          className="heading-display text-primary-foreground mb-4 md:mb-6 px-4 animate-fade-in-up"
           style={{ animationDelay: "0.2s" }}
         >
           Authentic Tamil &<br className="hidden sm:block" /> South Asian Cuisine
@@ -40,7 +40,7 @@ const HeroSection = () => {
         
         {/* Subheading */}
         <p 
-          className="text-lg md:text-xl text-hero-cream/90 max-w-2xl mx-auto mb-10 animate-fade-in-up font-body"
+          className="text-base sm:text-lg md:text-xl text-hero-cream/90 max-w-2xl mx-auto mb-8 md:mb-10 px-4 animate-fade-in-up font-body"
           style={{ animationDelay: "0.4s" }}
         >
           Freshly prepared meals, short eats, and refreshing mango shakes — made with real flavor.
@@ -48,15 +48,16 @@ const HeroSection = () => {
         
         {/* CTA Buttons */}
         <div 
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 animate-fade-in-up w-full sm:w-auto"
           style={{ animationDelay: "0.6s" }}
         >
           <Button 
             variant="hero"
             size="lg"
             asChild
+            className="w-full sm:w-auto min-h-[44px]"
           >
-            <a href="tel:+14162869334">
+            <a href="tel:+14162869334" className="flex items-center justify-center">
               <Phone className="mr-2 h-5 w-5" />
               Call to Order
             </a>
@@ -66,8 +67,9 @@ const HeroSection = () => {
             variant="heroOutline"
             size="lg"
             asChild
+            className="w-full sm:w-auto min-h-[44px]"
           >
-            <a href="#location">
+            <a href="#location" className="flex items-center justify-center">
               <MapPin className="mr-2 h-5 w-5" />
               Visit Us
             </a>
@@ -78,8 +80,9 @@ const HeroSection = () => {
       {/* Scroll Indicator */}
       <a 
         href="#about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group"
+        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group touch-manipulation"
         aria-label="Scroll to next section"
+        style={{ minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
         <ChevronDown className="w-8 h-8 text-hero-cream/70 group-hover:text-hero-cream transition-colors" />
       </a>

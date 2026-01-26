@@ -34,22 +34,22 @@ const MenuSection = () => {
           <div className="w-24 h-1 bg-accent mx-auto rounded-full" />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {menuCategories.map((category, index) => (
             <div 
               key={index}
-              className="card-elevated p-8 group cursor-default"
+              className="card-elevated p-6 sm:p-8 group cursor-default"
             >
-              <div className="flex items-start gap-5">
-                <div className="flex-shrink-0 w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                  <category.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors" />
+              <div className="flex items-start gap-4 sm:gap-5">
+                <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                  <category.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary group-hover:text-primary-foreground transition-colors" />
                 </div>
                 
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-display text-lg sm:text-xl font-semibold text-foreground mb-2">
                     {category.title}
                   </h3>
-                  <p className="text-muted-foreground text-base leading-relaxed">
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                     {category.description}
                   </p>
                 </div>

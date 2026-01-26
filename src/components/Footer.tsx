@@ -18,31 +18,31 @@ const Footer = () => {
           </p>
           
           {/* Contact Info */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-hero-cream/70 text-sm mb-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center text-hero-cream/70 text-xs sm:text-sm mb-6 sm:mb-8 px-4">
             <a 
               href="tel:+14162869334"
-              className="flex items-center gap-2 hover:text-hero-cream transition-colors"
+              className="flex items-center gap-2 hover:text-hero-cream transition-colors touch-manipulation min-h-[44px]"
             >
-              <Phone className="w-4 h-4" />
-              (416) 286-9334
+              <Phone className="w-4 h-4 flex-shrink-0" />
+              <span className="whitespace-nowrap">(416) 286-9334</span>
             </a>
             
             <span className="hidden sm:inline text-hero-cream/30">|</span>
             
             <a 
               href="mailto:info@heroscatering.com"
-              className="flex items-center gap-2 hover:text-hero-cream transition-colors"
+              className="flex items-center gap-2 hover:text-hero-cream transition-colors touch-manipulation min-h-[44px] break-all sm:break-normal"
             >
-              <Mail className="w-4 h-4" />
-              info@heroscatering.com
+              <Mail className="w-4 h-4 flex-shrink-0" />
+              <span>info@heroscatering.com</span>
             </a>
             
             <span className="hidden sm:inline text-hero-cream/30">|</span>
             
-            <span className="flex items-center gap-2">
-              <MapPin className="w-4 h-4" />
-              5215 Finch Ave E, Scarborough, ON M1S 0C2
-            </span>
+            <div className="flex items-center gap-2 text-center sm:text-left">
+              <MapPin className="w-4 h-4 flex-shrink-0" />
+              <span className="break-words">5215 Finch Ave E, Scarborough, ON M1S 0C2</span>
+            </div>
           </div>
           
           {/* Divider */}

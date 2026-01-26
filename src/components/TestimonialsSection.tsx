@@ -50,11 +50,11 @@ const TestimonialsSection = () => {
           <div className="w-24 h-1 bg-accent mx-auto rounded-full" />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="card-elevated p-6 lg:p-8 flex flex-col"
+              className="card-elevated p-5 sm:p-6 lg:p-8 flex flex-col"
             >
               {/* Quote Icon */}
               <div className="mb-4">

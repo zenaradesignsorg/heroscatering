@@ -29,17 +29,18 @@ const GallerySection = () => {
           <div className="w-24 h-1 bg-accent mx-auto rounded-full" />
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
           {galleryImages.map((image, index) => (
             <div 
               key={index}
-              className="gallery-item aspect-square"
+              className="gallery-item aspect-square overflow-hidden"
             >
               <img 
                 src={image.src}
                 alt={image.alt}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           ))}

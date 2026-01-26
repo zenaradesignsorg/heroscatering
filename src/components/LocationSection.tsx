@@ -43,14 +43,14 @@ const LocationSection = () => {
               Heroes Catering
             </h3>
             
-            <p className="text-lg text-foreground mb-2">
+            <p className="text-base sm:text-lg text-foreground mb-2">
               5215 Finch Ave E
             </p>
-            <p className="text-lg text-foreground mb-6">
+            <p className="text-base sm:text-lg text-foreground mb-4 sm:mb-6">
               Scarborough, ON M1S 0C2
             </p>
             
-            <p className="text-muted-foreground mb-8">
+            <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">
               Conveniently located in GTA Mall on the 2nd floor — dine in or take out.
             </p>
             
@@ -58,11 +58,13 @@ const LocationSection = () => {
               variant="default"
               size="lg"
               asChild
+              className="w-full sm:w-auto min-h-[44px]"
             >
               <a 
                 href="https://www.google.com/maps/search/?api=1&query=5215+Finch+Ave+E+Scarborough+ON+M1S+0C2"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center justify-center"
               >
                 <Navigation className="mr-2 h-5 w-5" />
                 Get Directions
