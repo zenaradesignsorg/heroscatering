@@ -1,7 +1,10 @@
-import { MapPin, Navigation } from "lucide-react";
+import { useState } from "react";
+import { MapPin, Navigation, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 
 const LocationSection = () => {
+  const [mapLoaded, setMapLoaded] = useState(false);
+  
   // Address: 5215 Finch Ave E, Scarborough, ON M1S 0C2
   const address = "5215 Finch Ave E, Scarborough, ON M1S 0C2";
   const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
@@ -18,7 +21,15 @@ const LocationSection = () => {
         
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Map */}
-          <div className="aspect-video lg:aspect-square rounded-2xl overflow-hidden shadow-lg order-2 lg:order-1">
+          <div className="aspect-video lg:aspect-square rounded-2xl overflow-hidden shadow-lg order-2 lg:order-1 relative bg-muted">
+            {/* Loading Placeholder */}
+            {!mapLoaded && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-muted to-muted/50 z-10">
+                <Loader2 className="w-8 h-8 text-primary animate-spin mb-4" />
+                <p className="text-sm text-muted-foreground font-medium">Loading map...</p>
+              </div>
+            )}
+            
             <iframe
               src={mapUrl}
               width="100%"
@@ -29,6 +40,7 @@ const LocationSection = () => {
               referrerPolicy="no-referrer-when-downgrade"
               title="Heroes Catering Location"
               className="w-full h-full"
+              onLoad={() => setMapLoaded(true)}
             />
           </div>
           
