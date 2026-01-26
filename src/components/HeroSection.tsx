@@ -43,7 +43,7 @@ const HeroSection = () => {
           className="text-base sm:text-lg md:text-xl text-hero-cream/90 max-w-2xl mx-auto mb-8 md:mb-10 px-4 animate-fade-in-up font-body"
           style={{ animationDelay: "0.4s" }}
         >
-          Freshly prepared meals, short eats, and refreshing mango shakes — made with real flavor.
+          Freshly prepared meals, short eats, and refreshing South Asian beverages — made with real flavor.
         </p>
         
         {/* CTA Buttons */}

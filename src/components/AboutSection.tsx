@@ -11,9 +11,9 @@ const AboutSection = () => {
           
           <p className="text-base sm:text-body text-muted-foreground leading-relaxed">
             Heroes Catering serves traditional Tamil and South Asian dishes made fresh every day. 
-            From comforting meals to quick short eats and popular mango shakes, everything is 
-            prepared with care and authentic flavors. Whether you're stopping by for a quick bite 
-            or ordering for a special event, quality and taste come first.
+            From comforting meals to quick short eats, refreshing beverages like Masala tea and Bru coffee, 
+            and popular mango shakes, everything is prepared with care and authentic flavors. Whether you're 
+            stopping by for a quick bite or ordering for a special event, quality and taste come first.
           </p>
         </div>
       </div>

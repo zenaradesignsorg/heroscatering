@@ -13,8 +13,8 @@ const menuCategories = [
   },
   {
     icon: GlassWater,
-    title: "Mango Shakes & Beverages",
-    description: "Refreshing drinks including our famous mango shake, lassi, and more",
+    title: "South Asian Beverages",
+    description: "Specializing in Masala tea, Bru coffee, refreshing mango shakes, lassi, and more",
   },
   {
     icon: Users,
