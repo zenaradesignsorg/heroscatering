@@ -21,9 +21,11 @@ const HeroSection = () => {
       <div className="relative z-10 container-width section-padding text-center">
         {/* Logo / Brand */}
         <div className="mb-8 md:mb-12 animate-fade-in px-4" style={{ animationDelay: "0.1s" }}>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold tracking-tight leading-tight drop-shadow-2xl" style={{ 
-            textShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3)',
-            letterSpacing: '-0.02em'
+          <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-display font-bold tracking-tight leading-tight" style={{ 
+            textShadow: '0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.9), 2px 2px 4px rgba(255, 255, 255, 0.1)',
+            letterSpacing: '-0.02em',
+            WebkitTextStroke: '1px rgba(0, 0, 0, 0.3)',
+            textStroke: '1px rgba(0, 0, 0, 0.3)'
           }}>
             <span className="text-primary">Heroes</span>{' '}
             <span className="text-accent">Catering</span>
