@@ -1,12 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
-
 @layer base {
   :root {
-    /* Hero's Catering Brand Colors */
+    /* Heroes Catering Brand Colors */
     --background: 45 30% 98%;
     --foreground: 150 10% 15%;
 
@@ -41,7 +41,7 @@
 
     --radius: 0.75rem;
 
-    /* Custom Hero's Colors */
+    /* Custom Heroes Colors */
     --hero-green: 145 45% 28%;
     --hero-green-light: 145 35% 45%;
     --hero-red: 5 70% 50%;
@@ -61,8 +61,8 @@
     --shadow-hover: 0 12px 40px -12px hsla(145 45% 28% / 0.25);
 
     /* Typography */
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Poppins', sans-serif;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -106,6 +106,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     @apply border-border;
   }
@@ -117,6 +121,11 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+  }
+
+  /* Smooth scrolling for anchor links */
+  a[href^="#"] {
+    scroll-behavior: smooth;
   }
 }
 

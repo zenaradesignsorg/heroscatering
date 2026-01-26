@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="text-center">
           {/* Logo */}
           <h3 className="font-display text-2xl font-bold text-hero-cream mb-2">
-            Hero's Catering
+            Heroes Catering
           </h3>
           
           {/* Tagline */}
@@ -20,11 +20,11 @@ const Footer = () => {
           {/* Contact Info */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-hero-cream/70 text-sm mb-8">
             <a 
-              href="tel:+14165551234"
+              href="tel:+14162869334"
               className="flex items-center gap-2 hover:text-hero-cream transition-colors"
             >
               <Phone className="w-4 h-4" />
-              (416) 555-1234
+              (416) 286-9334
             </a>
             
             <span className="hidden sm:inline text-hero-cream/30">|</span>
@@ -41,7 +41,7 @@ const Footer = () => {
             
             <span className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
-              123 Main Street, Toronto
+              5215 Finch Ave E, Scarborough, ON M1S 0C2
             </span>
           </div>
           
@@ -49,8 +49,21 @@ const Footer = () => {
           <div className="w-24 h-px bg-hero-cream/20 mx-auto mb-6" />
           
           {/* Copyright */}
-          <p className="text-hero-cream/40 text-xs">
-            © {currentYear} Hero's Catering. All rights reserved.
+          <p className="text-hero-cream/40 text-xs mb-3">
+            © {currentYear} Heroes Catering. All rights reserved.
+          </p>
+          
+          {/* Design Credit */}
+          <p className="text-hero-cream/30 text-xs">
+            Designed by{' '}
+            <a 
+              href="https://zenaradesigns.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-hero-cream/50 hover:text-hero-cream transition-colors underline underline-offset-2"
+            >
+              Zenara Designs
+            </a>
           </p>
         </div>
       </div>

@@ -18,18 +18,18 @@ const ContactSection = () => {
           
           {/* Phone - Primary CTA */}
           <a 
-            href="tel:+14165551234"
+            href="tel:+14162869334"
             className="inline-flex items-center gap-4 bg-primary-foreground text-primary px-10 py-5 rounded-full font-bold text-2xl md:text-3xl hover:scale-105 transition-transform duration-300 shadow-lg mb-10"
           >
             <Phone className="w-8 h-8" />
-            (416) 555-1234
+            (416) 286-9334
           </a>
           
           {/* Secondary Info */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-primary-foreground/80">
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5" />
-              <span>123 Main Street, Toronto</span>
+              <span>5215 Finch Ave E, Scarborough, ON M1S 0C2</span>
             </div>
             
             <div className="hidden sm:block w-1 h-1 rounded-full bg-primary-foreground/40" />

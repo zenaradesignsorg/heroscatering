@@ -43,7 +43,7 @@ const CateringSection = () => {
             size="lg"
             asChild
           >
-            <a href="tel:+14165551234">
+            <a href="tel:+14162869334">
               <Phone className="mr-2 h-5 w-5" />
               Call for Catering Orders
             </a>

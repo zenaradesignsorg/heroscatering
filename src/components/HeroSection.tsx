@@ -1,4 +1,4 @@
-import { Phone, MapPin } from "lucide-react";
+import { Phone, MapPin, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import heroImage from "@/assets/hero-food.jpg";
 
@@ -20,9 +20,13 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 container-width section-padding text-center">
         {/* Logo / Brand */}
-        <div className="mb-8 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-hero-cream tracking-wide">
-            Hero's Catering
+        <div className="mb-12 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold tracking-tight leading-tight drop-shadow-2xl" style={{ 
+            textShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3)',
+            letterSpacing: '-0.02em'
+          }}>
+            <span className="text-primary">Heroes</span>{' '}
+            <span className="text-accent">Catering</span>
           </h2>
         </div>
         
@@ -52,7 +56,7 @@ const HeroSection = () => {
             size="lg"
             asChild
           >
-            <a href="tel:+14165551234">
+            <a href="tel:+14162869334">
               <Phone className="mr-2 h-5 w-5" />
               Call to Order
             </a>
@@ -72,11 +76,13 @@ const HeroSection = () => {
       </div>
       
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-hero-cream/50 rounded-full flex justify-center">
-          <div className="w-1.5 h-3 bg-hero-cream/70 rounded-full mt-2 animate-pulse" />
-        </div>
-      </div>
+      <a 
+        href="#about"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group"
+        aria-label="Scroll to next section"
+      >
+        <ChevronDown className="w-8 h-8 text-hero-cream/70 group-hover:text-hero-cream transition-colors" />
+      </a>
     </section>
   );
 };

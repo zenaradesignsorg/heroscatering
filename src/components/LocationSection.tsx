@@ -2,8 +2,9 @@ import { MapPin, Navigation } from "lucide-react";
 import { Button } from "./ui/button";
 
 const LocationSection = () => {
-  // Replace with actual address coordinates
-  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2887.269!2d-79.3871!3d43.6426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDM4JzMzLjQiTiA3OcKwMjMnMTMuNiJX!5e0!3m2!1sen!2sca!4v1234567890";
+  // Address: 5215 Finch Ave E, Scarborough, ON M1S 0C2
+  const address = "5215 Finch Ave E, Scarborough, ON M1S 0C2";
+  const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
   
   return (
     <section id="location" className="section-padding bg-secondary">
@@ -26,7 +27,7 @@ const LocationSection = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Hero's Catering Location"
+              title="Heroes Catering Location"
               className="w-full h-full"
             />
           </div>
@@ -39,18 +40,18 @@ const LocationSection = () => {
             </div>
             
             <h3 className="font-display text-2xl font-bold text-foreground mb-4">
-              Hero's Catering
+              Heroes Catering
             </h3>
             
             <p className="text-lg text-foreground mb-2">
-              123 Main Street
+              5215 Finch Ave E
             </p>
             <p className="text-lg text-foreground mb-6">
-              Toronto, ON M1A 2B3
+              Scarborough, ON M1S 0C2
             </p>
             
             <p className="text-muted-foreground mb-8">
-              Conveniently located inside a food court — dine in or take out.
+              Conveniently located in GTA Mall on the 2nd floor — dine in or take out.
             </p>
             
             <Button 
@@ -59,7 +60,7 @@ const LocationSection = () => {
               asChild
             >
               <a 
-                href="https://www.google.com/maps/search/?api=1&query=123+Main+Street+Toronto"
+                href="https://www.google.com/maps/search/?api=1&query=5215+Finch+Ave+E+Scarborough+ON+M1S+0C2"
                 target="_blank"
                 rel="noopener noreferrer"
               >
