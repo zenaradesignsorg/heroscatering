@@ -1,13 +1,26 @@
 import { useState } from "react";
-import { MapPin, Navigation, Loader2 } from "lucide-react";
+import { MapPin, Navigation, Loader2, Store, Clock } from "lucide-react";
 import { Button } from "./ui/button";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import storeInterior from "@/assets/store-interior.jpg";
+
+const businessHours = [
+  { day: "Sunday", hours: "10 a.m. – 8 p.m." },
+  { day: "Monday", hours: "9 a.m. – 9 p.m." },
+  { day: "Tuesday", hours: "9 a.m. – 9 p.m." },
+  { day: "Wednesday", hours: "9 a.m. – 9 p.m." },
+  { day: "Thursday", hours: "9 a.m. – 9 p.m." },
+  { day: "Friday", hours: "9 a.m. – 9 p.m." },
+  { day: "Saturday", hours: "9 a.m. – 9 p.m." },
+];
 
 const LocationSection = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
   const { ref: mapRef, isVisible: mapVisible } = useScrollAnimation({ threshold: 0.2 });
   const { ref: infoRef, isVisible: infoVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: hoursRef, isVisible: hoursVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: storeRef, isVisible: storeVisible } = useScrollAnimation({ threshold: 0.2 });
   
   // Address: 5215 Finch Ave E, Scarborough, ON M1S 0C2
   const address = "5215 Finch Ave E, Scarborough, ON M1S 0C2";
@@ -26,7 +39,8 @@ const LocationSection = () => {
           <div className="w-24 h-1 bg-accent mx-auto rounded-full" />
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        {/* Map and Location Info Grid */}
+        <div className="grid lg:grid-cols-2 gap-8 items-center mb-12">
           {/* Map */}
           <div 
             ref={mapRef}
@@ -54,7 +68,7 @@ const LocationSection = () => {
             />
           </div>
           
-          {/* Info */}
+          {/* Location Info */}
           <div 
             ref={infoRef}
             className={`text-center lg:text-left order-1 lg:order-2 animate-on-scroll-slide-right ${infoVisible ? 'visible' : ''}`}
@@ -95,6 +109,56 @@ const LocationSection = () => {
                 Get Directions
               </a>
             </Button>
+          </div>
+        </div>
+        
+        {/* Business Hours and Store Image */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Business Hours - Left */}
+          <div 
+            ref={hoursRef}
+            className={`bg-background/50 rounded-2xl p-6 sm:p-8 border border-primary/10 animate-on-scroll-slide-left ${hoursVisible ? 'visible' : ''}`}
+          >
+            <div className="inline-flex items-center gap-2 text-primary mb-6">
+              <Clock className="w-5 h-5" />
+              <span className="font-semibold text-lg font-display">Hours</span>
+            </div>
+            
+            <div className="space-y-2">
+              {businessHours.map((schedule, index) => (
+                <div 
+                  key={index}
+                  className="flex justify-between items-center py-3 px-2 rounded-lg hover:bg-primary/5 transition-colors"
+                >
+                  <span className="text-foreground font-medium text-base">{schedule.day}</span>
+                  <span className="text-muted-foreground font-body">{schedule.hours}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Store Interior Image - Right */}
+          <div 
+            ref={storeRef}
+            className={`animate-on-scroll-slide-right ${storeVisible ? 'visible' : ''}`}
+          >
+            <div className="inline-flex items-center gap-2 text-primary mb-4">
+              <Store className="w-5 h-5" />
+              <span className="font-semibold font-display">Our Store</span>
+            </div>
+            
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img 
+                src={storeInterior}
+                alt="Heroes Catering store interior in GTA Mall"
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
+            
+            <p className="text-sm text-muted-foreground mt-4 leading-relaxed">
+              Visit us at our location in GTA Mall — see our fresh food display and authentic South Asian cuisine
+            </p>
           </div>
         </div>
       </div>
