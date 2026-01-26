@@ -1,21 +1,21 @@
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
-import gallery7 from "@/assets/gallery-7.jpg";
-import gallery8 from "@/assets/gallery-8.jpg";
+import displayGallery1 from "@/assets/display-gallery1.webp";
+import faloodaGallery2 from "@/assets/falooda-gallery2.jpg";
+import kothuGallery3 from "@/assets/kothu-gallery3.jpeg";
+import mangoshakeGallery4 from "@/assets/mangoshake-gallery4.jpg";
+import mulluMurukkuGallery5 from "@/assets/mullu-murukku-gallery5.jpg";
+import muttonrollsGallery6 from "@/assets/muttonrolls-gallery6.jpg";
+import chickenwingsGallery7 from "@/assets/chickenwings-gallery7.jpeg";
+import samosaGallery8 from "@/assets/samosa-gallery8.jpg";
 
 const galleryImages = [
-  { src: gallery1, alt: "Crispy Dosa with Chutneys" },
-  { src: gallery2, alt: "Fragrant Mutton Biryani" },
-  { src: gallery3, alt: "Refreshing Mango Shakes" },
-  { src: gallery4, alt: "Crispy Short Eats Platter" },
-  { src: gallery5, alt: "Spicy Chicken Curry" },
-  { src: gallery6, alt: "Vegetarian Thali Meal" },
-  { src: gallery7, alt: "Our Welcoming Store" },
-  { src: gallery8, alt: "Catering Spread" },
+  { src: displayGallery1, alt: "Food Display" },
+  { src: faloodaGallery2, alt: "Falooda" },
+  { src: kothuGallery3, alt: "Kothu" },
+  { src: mangoshakeGallery4, alt: "Mango Shake" },
+  { src: mulluMurukkuGallery5, alt: "Mullu Murukku" },
+  { src: muttonrollsGallery6, alt: "Mutton Rolls" },
+  { src: chickenwingsGallery7, alt: "Chicken Wings" },
+  { src: samosaGallery8, alt: "Samosa" },
 ];
 
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
