@@ -3,40 +3,40 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const testimonials = [
   {
-    name: "Priya S.",
-    location: "Scarborough",
-    rating: 5,
-    text: "The best Tamil food in the area! The biryani is always fresh and flavorful. Heroes Catering has become our go-to spot for authentic South Asian cuisine.",
-  },
-  {
-    name: "Raj K.",
+    name: "George Paranthaman",
     location: "Toronto",
     rating: 5,
-    text: "Ordered catering for our family gathering and everyone was impressed. The portions were generous and the taste was incredible. Highly recommend!",
+    text: "The food is always fresh, flavourful, and beautifully presented. Every dish is prepared with great care and attention to detail. The service from Kumar, Anushia, Lakshi, and the entire kitchen staff is smooth, professional, and stress-free. Highly recommended!",
   },
   {
-    name: "Meera P.",
-    location: "Markham",
-    rating: 5,
-    text: "Their mango shake is absolutely amazing! And the short eats are always crispy and fresh. Great service and authentic flavors every time.",
-  },
-  {
-    name: "Arjun M.",
+    name: "Rasha A",
     location: "Scarborough",
     rating: 5,
-    text: "Been coming here for months. The food quality is consistent, prices are fair, and the staff is friendly. A true gem in the neighborhood!",
+    text: "Great food, everything is so delicious and spicy! I love their Masala tea. They are friendly and kind, and their food is super! The price is not bad either.",
   },
   {
-    name: "Lakshmi R.",
+    name: "Theepan Yogarajah",
+    location: "Scarborough",
+    rating: 5,
+    text: "Tried the egg roti and some snacks (samosa, vapian, vadai, cassava chips). Pretty solid quality and affordable prices. Good to see that the only take out store in the mall is priced well.",
+  },
+  {
+    name: "Hansini r.",
     location: "Toronto",
     rating: 5,
-    text: "Perfect for quick lunches and family dinners. The curries are rich and aromatic, just like home cooking. Love this place!",
+    text: "Great food and atmosphere! We ordered the koththu roti, vadai, and fish buns. Made us feel nostalgic and right at home. Thank you!",
   },
   {
-    name: "Vikram T.",
+    name: "Anthony Stanislaus",
     location: "Scarborough",
     rating: 5,
-    text: "Catered our office lunch and it was a huge hit! Everyone loved the variety and authentic taste. Will definitely order again.",
+    text: "Great snacks and friendly service. Their mutton rolls are juicy, flavourful and super crispy. Their fish buns are the best I've ever had. Highly recommend!",
+  },
+  {
+    name: "Rob K.",
+    location: "Toronto",
+    rating: 5,
+    text: "Love this place. Food is unbelievably delicious and portion sizes are huge for the price. Everything here is a hit, especially the Kothu Roti and fish buns.",
   },
 ];
 
