@@ -1,13 +1,19 @@
 import { Phone, MapPin, Mail } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const ContactSection = () => {
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
+
   return (
     <section className="section-padding bg-primary relative overflow-hidden">
       {/* Pattern overlay */}
       <div className="absolute inset-0 pattern-overlay opacity-10" />
       
       <div className="container-width relative z-10">
-        <div className="max-w-2xl mx-auto text-center">
+        <div 
+          ref={sectionRef}
+          className={`max-w-2xl mx-auto text-center animate-on-scroll-fade ${sectionVisible ? 'visible' : ''}`}
+        >
           <h2 className="heading-section text-primary-foreground mb-4">
             Ready to Order?
           </h2>

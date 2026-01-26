@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { MapPin, Navigation, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const LocationSection = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
+  const { ref: mapRef, isVisible: mapVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: infoRef, isVisible: infoVisible } = useScrollAnimation({ threshold: 0.2 });
   
   // Address: 5215 Finch Ave E, Scarborough, ON M1S 0C2
   const address = "5215 Finch Ave E, Scarborough, ON M1S 0C2";
@@ -12,7 +16,10 @@ const LocationSection = () => {
   return (
     <section id="location" className="section-padding bg-secondary">
       <div className="container-width">
-        <div className="text-center mb-12">
+        <div 
+          ref={sectionRef}
+          className={`text-center mb-12 animate-on-scroll-fade ${sectionVisible ? 'visible' : ''}`}
+        >
           <h2 className="heading-section text-foreground mb-4">
             Visit Us
           </h2>
@@ -21,7 +28,10 @@ const LocationSection = () => {
         
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Map */}
-          <div className="aspect-video lg:aspect-square rounded-2xl overflow-hidden shadow-lg order-2 lg:order-1 relative bg-muted">
+          <div 
+            ref={mapRef}
+            className={`aspect-video lg:aspect-square rounded-2xl overflow-hidden shadow-lg order-2 lg:order-1 relative bg-muted animate-on-scroll-slide-left ${mapVisible ? 'visible' : ''}`}
+          >
             {/* Loading Placeholder */}
             {!mapLoaded && (
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-muted to-muted/50 z-10">
@@ -45,7 +55,10 @@ const LocationSection = () => {
           </div>
           
           {/* Info */}
-          <div className="text-center lg:text-left order-1 lg:order-2">
+          <div 
+            ref={infoRef}
+            className={`text-center lg:text-left order-1 lg:order-2 animate-on-scroll-slide-right ${infoVisible ? 'visible' : ''}`}
+          >
             <div className="inline-flex items-center gap-2 text-primary mb-4">
               <MapPin className="w-5 h-5" />
               <span className="font-semibold">Our Location</span>

@@ -4,6 +4,7 @@ import {
   GlassWater, 
   Users 
 } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const menuData = {
   food: {
@@ -53,6 +54,8 @@ const menuData = {
 };
 
 const MenuSection = () => {
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
+
   return (
     <section className="section-padding bg-secondary/30 relative overflow-hidden">
       {/* Decorative background elements */}
@@ -62,7 +65,10 @@ const MenuSection = () => {
       </div>
       
       <div className="container-width relative z-10">
-        <div className="text-center mb-16">
+        <div 
+          ref={sectionRef}
+          className={`text-center mb-16 animate-on-scroll-fade ${sectionVisible ? 'visible' : ''}`}
+        >
           <h2 className="heading-section text-foreground mb-4">
             Menu Highlights
           </h2>
@@ -72,51 +78,7 @@ const MenuSection = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {Object.entries(menuData).map(([key, category], index) => (
-              <div 
-                key={key} 
-                className="relative bg-background/80 backdrop-blur-sm rounded-xl p-6 sm:p-7 border border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                {/* Decorative corner accent */}
-                <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-bl-full transform translate-x-1/2 -translate-y-1/2" />
-                </div>
-                
-                {/* Category Header */}
-                <div className="mb-5 sm:mb-6 relative">
-                  <div className="inline-flex items-center gap-3 mb-3">
-                    <div className="w-1 h-8 sm:h-10 bg-gradient-to-b from-primary to-accent rounded-full" />
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <category.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                    </div>
-                    <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-                      {category.title}
-                    </h3>
-                  </div>
-                  <div className="h-px w-full bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
-                </div>
-                
-                {/* Menu Items */}
-                <div className="space-y-3 sm:space-y-3.5">
-                  {category.items.map((item, itemIndex) => {
-                    const CategoryIcon = category.icon;
-                    return (
-                      <div 
-                        key={itemIndex}
-                        className="flex items-start gap-3 group"
-                      >
-                        <div className="flex-shrink-0 mt-0.5">
-                          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-300 group-hover:scale-110">
-                            <CategoryIcon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-                          </div>
-                        </div>
-                        <p className="text-sm sm:text-base text-foreground leading-relaxed font-body group-hover:text-primary transition-colors duration-300 flex-1 pt-1">
-                          {item}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+              <MenuCard key={key} category={category} index={index} />
             ))}
           </div>
         </div>
@@ -130,6 +92,61 @@ const MenuSection = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const MenuCard = ({ category, index }: { category: typeof menuData.food, index: number }) => {
+  const { ref: cardRef, isVisible: cardVisible } = useScrollAnimation({ 
+    threshold: 0.1 
+  });
+
+  return (
+    <div 
+      ref={cardRef}
+      className={`relative bg-background/80 backdrop-blur-sm rounded-xl p-6 sm:p-7 border border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300 animate-on-scroll-scale ${cardVisible ? 'visible' : ''}`}
+      style={{ transitionDelay: `${index * 0.1}s` }}
+    >
+      {/* Decorative corner accent */}
+      <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+        <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-bl-full transform translate-x-1/2 -translate-y-1/2" />
+      </div>
+      
+      {/* Category Header */}
+      <div className="mb-5 sm:mb-6 relative">
+        <div className="inline-flex items-center gap-3 mb-3">
+          <div className="w-1 h-8 sm:h-10 bg-gradient-to-b from-primary to-accent rounded-full" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+            <category.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+          </div>
+          <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
+            {category.title}
+          </h3>
+        </div>
+        <div className="h-px w-full bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
+      </div>
+      
+      {/* Menu Items */}
+      <div className="space-y-3 sm:space-y-3.5">
+        {category.items.map((item, itemIndex) => {
+          const CategoryIcon = category.icon;
+          return (
+            <div 
+              key={itemIndex}
+              className="flex items-start gap-3 group"
+            >
+              <div className="flex-shrink-0 mt-0.5">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-300 group-hover:scale-110">
+                  <CategoryIcon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+                </div>
+              </div>
+              <p className="text-sm sm:text-base text-foreground leading-relaxed font-body group-hover:text-primary transition-colors duration-300 flex-1 pt-1">
+                {item}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 

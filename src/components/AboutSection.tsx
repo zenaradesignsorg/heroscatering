@@ -1,8 +1,15 @@
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+
 const AboutSection = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
     <section id="about" className="section-padding bg-secondary">
       <div className="container-width">
-        <div className="max-w-3xl mx-auto text-center px-4">
+        <div 
+          ref={ref}
+          className={`max-w-3xl mx-auto text-center px-4 animate-on-scroll ${isVisible ? 'visible' : ''}`}
+        >
           <h2 className="heading-section text-foreground mb-4 sm:mb-6">
             Homestyle Cooking, Made Fresh Daily
           </h2>

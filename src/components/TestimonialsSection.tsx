@@ -1,4 +1,5 @@
 import { Star, Quote } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const testimonials = [
   {
@@ -40,10 +41,15 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
+
   return (
     <section id="testimonials" className="section-padding bg-secondary">
       <div className="container-width">
-        <div className="text-center mb-12">
+        <div 
+          ref={sectionRef}
+          className={`text-center mb-12 animate-on-scroll-fade ${sectionVisible ? 'visible' : ''}`}
+        >
           <h2 className="heading-section text-foreground mb-4">
             What Our Customers Say
           </h2>
@@ -51,10 +57,14 @@ const TestimonialsSection = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial, index) => {
+            const { ref: cardRef, isVisible: cardVisible } = useScrollAnimation({ threshold: 0.1 });
+            return (
             <div 
               key={index}
-              className="card-elevated p-5 sm:p-6 lg:p-8 flex flex-col"
+              ref={cardRef}
+              className={`card-elevated p-5 sm:p-6 lg:p-8 flex flex-col animate-on-scroll ${cardVisible ? 'visible' : ''}`}
+              style={{ transitionDelay: `${index * 0.1}s` }}
             >
               {/* Quote Icon */}
               <div className="mb-4">
