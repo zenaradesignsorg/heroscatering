@@ -15,24 +15,41 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
     const element = elementRef.current;
     if (!element) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (triggerOnce) {
-            observer.unobserve(element);
-          }
-        } else if (!triggerOnce) {
-          setIsVisible(false);
-        }
-      },
-      { threshold, rootMargin }
-    );
+    // Check if IntersectionObserver is supported
+    if (typeof IntersectionObserver === "undefined") {
+      // Fallback: show element immediately if IntersectionObserver is not supported
+      setIsVisible(true);
+      return;
+    }
 
-    observer.observe(element);
+    let observer: IntersectionObserver | null = null;
+
+    try {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            if (triggerOnce && observer) {
+              observer.unobserve(element);
+            }
+          } else if (!triggerOnce) {
+            setIsVisible(false);
+          }
+        },
+        { threshold, rootMargin }
+      );
+
+      observer.observe(element);
+    } catch (error) {
+      // Fallback: show element if observer creation fails
+      console.warn("IntersectionObserver failed, showing element:", error);
+      setIsVisible(true);
+    }
 
     return () => {
-      observer.disconnect();
+      if (observer) {
+        observer.disconnect();
+      }
     };
   }, [threshold, rootMargin, triggerOnce]);
 

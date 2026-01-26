@@ -16,6 +16,7 @@ const businessHours = [
 
 const LocationSection = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [mapError, setMapError] = useState(false);
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
   const { ref: mapRef, isVisible: mapVisible } = useScrollAnimation({ threshold: 0.2 });
   const { ref: infoRef, isVisible: infoVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -47,10 +48,19 @@ const LocationSection = () => {
             className={`aspect-video lg:aspect-square rounded-2xl overflow-hidden shadow-lg order-2 lg:order-1 relative bg-muted animate-on-scroll-slide-left ${mapVisible ? 'visible' : ''}`}
           >
             {/* Loading Placeholder */}
-            {!mapLoaded && (
+            {!mapLoaded && !mapError && (
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-muted to-muted/50 z-10">
                 <Loader2 className="w-8 h-8 text-primary animate-spin mb-4" />
                 <p className="text-sm text-muted-foreground font-medium">Loading map...</p>
+              </div>
+            )}
+            
+            {/* Error State */}
+            {mapError && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-muted to-muted/50 z-10 p-4">
+                <p className="text-sm text-muted-foreground font-medium text-center mb-4">
+                  Unable to load map. Please use the "Get Directions" button below.
+                </p>
               </div>
             )}
             
@@ -62,9 +72,17 @@ const LocationSection = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
               title="Heroes Catering Location"
               className="w-full h-full"
-              onLoad={() => setMapLoaded(true)}
+              onLoad={() => {
+                setMapLoaded(true);
+                setMapError(false);
+              }}
+              onError={() => {
+                setMapError(true);
+                setMapLoaded(false);
+              }}
             />
           </div>
           
@@ -74,7 +92,7 @@ const LocationSection = () => {
             className={`text-center lg:text-left order-1 lg:order-2 animate-on-scroll-slide-right ${infoVisible ? 'visible' : ''}`}
           >
             <div className="inline-flex items-center gap-2 text-primary mb-4">
-              <MapPin className="w-5 h-5" />
+              <MapPin className="w-5 h-5" aria-hidden="true" />
               <span className="font-semibold">Our Location</span>
             </div>
             
@@ -104,8 +122,9 @@ const LocationSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center"
+                aria-label="Get directions to Heroes Catering on Google Maps"
               >
-                <Navigation className="mr-2 h-5 w-5" />
+                <Navigation className="mr-2 h-5 w-5" aria-hidden="true" />
                 Get Directions
               </a>
             </Button>
@@ -120,14 +139,14 @@ const LocationSection = () => {
             className={`bg-background/50 rounded-2xl p-6 sm:p-8 border border-primary/10 animate-on-scroll-slide-left ${hoursVisible ? 'visible' : ''}`}
           >
             <div className="inline-flex items-center gap-2 text-primary mb-6">
-              <Clock className="w-5 h-5" />
+              <Clock className="w-5 h-5" aria-hidden="true" />
               <span className="font-semibold text-lg font-display">Hours</span>
             </div>
             
             <div className="space-y-2">
-              {businessHours.map((schedule, index) => (
+              {businessHours.map((schedule) => (
                 <div 
-                  key={index}
+                  key={`hours-${schedule.day.toLowerCase()}`}
                   className="flex justify-between items-center py-3 px-2 rounded-lg hover:bg-primary/5 transition-colors"
                 >
                   <span className="text-foreground font-medium text-base">{schedule.day}</span>
@@ -143,16 +162,20 @@ const LocationSection = () => {
             className={`animate-on-scroll-slide-right ${storeVisible ? 'visible' : ''}`}
           >
             <div className="inline-flex items-center gap-2 text-primary mb-4">
-              <Store className="w-5 h-5" />
+              <Store className="w-5 h-5" aria-hidden="true" />
               <span className="font-semibold font-display">Our Store</span>
             </div>
             
             <div className="rounded-2xl overflow-hidden shadow-lg">
               <img 
                 src={storeInterior}
-                alt="Heroes Catering store interior in GTA Mall"
+                alt="Heroes Catering store interior in GTA Mall showing food display counter"
                 className="w-full h-auto object-cover"
                 loading="lazy"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
               />
             </div>
             

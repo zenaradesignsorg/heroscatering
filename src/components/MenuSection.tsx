@@ -131,7 +131,7 @@ const MenuCard = ({ category, index }: { category: typeof menuData.food, index: 
           const CategoryIcon = category.icon;
           return (
             <div 
-              key={itemIndex}
+              key={`${category.title.toLowerCase()}-${item.substring(0, 20).replace(/\s+/g, '-').toLowerCase()}-${itemIndex}`}
               className="flex items-start gap-3 group"
             >
               <div className="flex-shrink-0 mt-0.5">

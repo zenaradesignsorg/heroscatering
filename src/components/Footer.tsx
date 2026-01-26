@@ -22,25 +22,27 @@ const Footer = () => {
             <a 
               href="tel:+14162869334"
               className="flex items-center gap-2 hover:text-hero-cream transition-colors touch-manipulation min-h-[44px]"
+              aria-label="Call Heroes Catering at (416) 286-9334"
             >
-              <Phone className="w-4 h-4 flex-shrink-0" />
+              <Phone className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
               <span className="whitespace-nowrap">(416) 286-9334</span>
             </a>
             
-            <span className="hidden sm:inline text-hero-cream/30">|</span>
+            <span className="hidden sm:inline text-hero-cream/30" aria-hidden="true">|</span>
             
             <a 
               href="mailto:info@heroscatering.com"
               className="flex items-center gap-2 hover:text-hero-cream transition-colors touch-manipulation min-h-[44px] break-all sm:break-normal"
+              aria-label="Email Heroes Catering at info@heroscatering.com"
             >
-              <Mail className="w-4 h-4 flex-shrink-0" />
+              <Mail className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
               <span>info@heroscatering.com</span>
             </a>
             
-            <span className="hidden sm:inline text-hero-cream/30">|</span>
+            <span className="hidden sm:inline text-hero-cream/30" aria-hidden="true">|</span>
             
             <div className="flex items-center gap-2 text-center sm:text-left">
-              <MapPin className="w-4 h-4 flex-shrink-0" />
+              <MapPin className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
               <span className="break-words">5215 Finch Ave E, Scarborough, ON M1S 0C2</span>
             </div>
           </div>
@@ -61,6 +63,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-hero-cream/50 hover:text-hero-cream transition-colors underline underline-offset-2"
+              aria-label="Visit Zenara Designs website (opens in new tab)"
             >
               Zenara Designs
             </a>

@@ -57,8 +57,12 @@ const HeroSection = () => {
             asChild
             className="w-full sm:w-auto min-h-[44px]"
           >
-            <a href="tel:+14162869334" className="flex items-center justify-center">
-              <Phone className="mr-2 h-5 w-5" />
+            <a 
+              href="tel:+14162869334" 
+              className="flex items-center justify-center"
+              aria-label="Call Heroes Catering at (416) 286-9334"
+            >
+              <Phone className="mr-2 h-5 w-5" aria-hidden="true" />
               Call to Order
             </a>
           </Button>
@@ -69,8 +73,12 @@ const HeroSection = () => {
             asChild
             className="w-full sm:w-auto min-h-[44px]"
           >
-            <a href="#location" className="flex items-center justify-center">
-              <MapPin className="mr-2 h-5 w-5" />
+            <a 
+              href="#location" 
+              className="flex items-center justify-center"
+              aria-label="Scroll to location section"
+            >
+              <MapPin className="mr-2 h-5 w-5" aria-hidden="true" />
               Visit Us
             </a>
           </Button>
@@ -81,10 +89,10 @@ const HeroSection = () => {
       <a 
         href="#about"
         className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group touch-manipulation"
-        aria-label="Scroll to next section"
+        aria-label="Scroll to about section"
         style={{ minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
-        <ChevronDown className="w-8 h-8 text-hero-cream/70 group-hover:text-hero-cream transition-colors" />
+        <ChevronDown className="w-8 h-8 text-hero-cream/70 group-hover:text-hero-cream transition-colors" aria-hidden="true" />
       </a>
     </section>
   );

@@ -44,6 +44,10 @@ const Index = () => {
 
   return (
     <main className="min-h-screen">
+      {/* Skip to content link for accessibility */}
+      <a href="#about" className="skip-to-content">
+        Skip to main content
+      </a>
       <HeroSection />
       <AboutSection />
       <MenuSection />

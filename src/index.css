@@ -131,6 +131,31 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  /* Focus-visible styles for keyboard navigation */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Skip to content link for accessibility */
+  .skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+  }
+
+  .skip-to-content:focus {
+    top: 0;
+  }
+
   /* Improve text readability on small screens */
   @media (max-width: 640px) {
     body {

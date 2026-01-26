@@ -55,8 +55,12 @@ const CateringSection = () => {
             asChild
             className="w-full sm:w-auto min-h-[44px]"
           >
-            <a href="tel:+14162869334" className="flex items-center justify-center">
-              <Phone className="mr-2 h-5 w-5" />
+            <a 
+              href="tel:+14162869334" 
+              className="flex items-center justify-center"
+              aria-label="Call Heroes Catering for catering orders at (416) 286-9334"
+            >
+              <Phone className="mr-2 h-5 w-5" aria-hidden="true" />
               Call for Catering Orders
             </a>
           </Button>

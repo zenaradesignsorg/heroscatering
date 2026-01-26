@@ -61,7 +61,7 @@ const TestimonialsSection = () => {
             const { ref: cardRef, isVisible: cardVisible } = useScrollAnimation({ threshold: 0.1 });
             return (
               <div 
-                key={index}
+                key={`testimonial-${testimonial.name}-${index}`}
                 ref={cardRef}
                 className={`card-elevated p-5 sm:p-6 lg:p-8 flex flex-col animate-on-scroll ${cardVisible ? 'visible' : ''}`}
                 style={{ transitionDelay: `${index * 0.1}s` }}
