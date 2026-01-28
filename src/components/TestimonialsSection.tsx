@@ -44,7 +44,7 @@ const TestimonialsSection = () => {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
 
   return (
-    <section id="testimonials" className="section-padding bg-secondary">
+    <section id="testimonials" className="section-padding bg-secondary scroll-mt-24">
       <div className="container-width">
         <div 
           ref={sectionRef}

@@ -24,7 +24,7 @@ const GallerySection = () => {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
 
   return (
-    <section className="section-padding bg-secondary">
+    <section id="gallery" className="section-padding bg-secondary scroll-mt-24">
       <div className="container-width">
         <div 
           ref={sectionRef}

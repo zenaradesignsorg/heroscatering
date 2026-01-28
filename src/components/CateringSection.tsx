@@ -13,7 +13,7 @@ const CateringSection = () => {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
 
   return (
-    <section className="section-padding bg-primary relative overflow-hidden">
+    <section id="catering" className="section-padding bg-primary relative overflow-hidden scroll-mt-24">
       {/* Subtle pattern overlay */}
       <div className="absolute inset-0 pattern-overlay opacity-10" />
       

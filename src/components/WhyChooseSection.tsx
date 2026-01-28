@@ -5,7 +5,7 @@ const WhyChooseSection = () => {
   const { ref: storyRef, isVisible: storyVisible } = useScrollAnimation({ threshold: 0.2 });
 
   return (
-    <section className="section-padding bg-gradient-to-b from-background to-secondary/30">
+    <section id="why-choose" className="section-padding bg-gradient-to-b from-background to-secondary/30 scroll-mt-24">
       <div className="container-width">
         <div className="max-w-5xl mx-auto px-4">
           <div 

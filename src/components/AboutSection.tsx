@@ -4,7 +4,7 @@ const AboutSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="about" className="section-padding bg-secondary">
+    <section id="about" className="section-padding bg-secondary scroll-mt-24">
       <div className="container-width">
         <div 
           ref={ref}

@@ -4,18 +4,22 @@ import heroImage from "@/assets/hero-food.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="top"
+      className="relative pt-16 min-h-[calc(100svh-4rem)] min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden scroll-mt-24"
+    >
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat filter brightness-110 saturate-125 contrast-105"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
       
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-hero-charcoal/60 via-hero-charcoal/70 to-hero-charcoal/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-hero-charcoal/35 via-hero-charcoal/55 to-hero-charcoal/70" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.10),transparent_60%)]" />
       
       {/* Pattern Overlay */}
-      <div className="absolute inset-0 pattern-overlay opacity-30" />
+      <div className="absolute inset-0 pattern-overlay opacity-20" />
       
       {/* Content */}
       <div className="relative z-10 container-width section-padding text-center">
@@ -90,7 +94,7 @@ const HeroSection = () => {
       {/* Scroll Indicator */}
       <a 
         href="#about"
-        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group touch-manipulation"
+        className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group touch-manipulation"
         aria-label="Scroll to about section"
         style={{ minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >

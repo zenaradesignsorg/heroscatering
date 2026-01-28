@@ -28,7 +28,7 @@ const LocationSection = () => {
   const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
   
   return (
-    <section id="location" className="section-padding bg-secondary">
+    <section id="location" className="section-padding bg-secondary scroll-mt-24">
       <div className="container-width">
         <div 
           ref={sectionRef}

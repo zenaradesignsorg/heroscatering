@@ -57,7 +57,7 @@ const MenuSection = () => {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
 
   return (
-    <section className="section-padding bg-secondary/30 relative overflow-hidden">
+    <section id="menu" className="section-padding bg-secondary/30 relative overflow-hidden scroll-mt-24">
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-64 h-64 bg-primary rounded-full blur-3xl" />
