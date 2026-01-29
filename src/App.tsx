@@ -6,7 +6,7 @@ const App = () => {
     <ErrorBoundary>
       <Index />
     </ErrorBoundary>
-  );
+);
 };
 
 export default App;

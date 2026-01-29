@@ -32,19 +32,19 @@ const CateringSection = () => {
             {cateringFeatures.map((feature, index) => {
               const { ref: featureRef, isVisible: featureVisible } = useScrollAnimation({ threshold: 0.2 });
               return (
-                <div 
-                  key={index}
+              <div 
+                key={index}
                   ref={featureRef}
                   className={`flex flex-col items-center gap-2 sm:gap-3 p-3 sm:p-4 animate-on-scroll-scale ${featureVisible ? 'visible' : ''}`}
                   style={{ transitionDelay: `${index * 0.1}s` }}
-                >
+              >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-foreground/10 flex items-center justify-center">
                     <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
-                  </div>
-                  <span className="text-primary-foreground/90 text-xs sm:text-sm font-medium text-center">
-                    {feature.text}
-                  </span>
                 </div>
+                  <span className="text-primary-foreground/90 text-xs sm:text-sm font-medium text-center">
+                  {feature.text}
+                </span>
+              </div>
               );
             })}
           </div>

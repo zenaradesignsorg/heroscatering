@@ -18,16 +18,16 @@ const Index = () => {
       </a>
       <Navbar />
       <main id="main" className="min-h-screen">
-        <HeroSection />
-        <AboutSection />
-        <MenuSection />
-        <CateringSection />
-        <GallerySection />
-        <WhyChooseSection />
+      <HeroSection />
+      <AboutSection />
+      <MenuSection />
+      <CateringSection />
+      <GallerySection />
+      <WhyChooseSection />
         <TestimonialsSection />
-        <LocationSection />
-        <Footer />
-      </main>
+      <LocationSection />
+      <Footer />
+    </main>
     </>
   );
 };

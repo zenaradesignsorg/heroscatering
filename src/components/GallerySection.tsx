@@ -40,17 +40,17 @@ const GallerySection = () => {
           {galleryImages.map((image, index) => {
             const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation({ threshold: 0.1 });
             return (
-              <div 
+            <div 
                 key={`gallery-${image.alt.replace(/\s+/g, '-').toLowerCase()}-${index}`}
                 ref={imageRef}
                 className={`gallery-item aspect-square overflow-hidden animate-on-scroll-scale ${imageVisible ? 'visible' : ''}`}
                 style={{ transitionDelay: `${index * 0.05}s` }}
-              >
-                <img 
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
+            >
+              <img 
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover"
+                loading="lazy"
                   decoding="async"
                   width="400"
                   height="400"
@@ -58,8 +58,8 @@ const GallerySection = () => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';
                   }}
-                />
-              </div>
+              />
+            </div>
             );
           })}
         </div>

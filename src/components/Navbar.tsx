@@ -43,11 +43,11 @@ const Navbar = () => {
   }, [open]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-hero-charcoal/30 bg-hero-charcoal/95 backdrop-blur-md supports-[backdrop-filter]:bg-hero-charcoal/90 shadow-lg">
       <nav className="container-width px-4 h-16 flex items-center justify-between">
         <a
           href="#top"
-          className="font-display text-xl sm:text-2xl font-bold tracking-tight text-foreground hover:text-primary transition-colors"
+          className="font-display text-xl sm:text-2xl font-bold tracking-tight text-hero-cream hover:text-primary transition-colors"
           aria-label="Go to top"
           onClick={() => setOpen(false)}
         >
@@ -62,7 +62,7 @@ const Navbar = () => {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-foreground/80 hover:text-foreground transition-colors"
+                className="text-hero-cream/90 hover:text-hero-cream transition-colors"
               >
                 {item.label}
               </a>
@@ -80,7 +80,7 @@ const Navbar = () => {
         {/* Mobile toggle */}
         <button
           type="button"
-          className="lg:hidden inline-flex items-center justify-center rounded-md p-2 min-w-[44px] min-h-[44px] text-foreground hover:bg-secondary transition-colors"
+          className="lg:hidden inline-flex items-center justify-center rounded-md p-2 min-w-[44px] min-h-[44px] text-hero-cream hover:bg-hero-charcoal/50 transition-colors"
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -91,14 +91,14 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {open ? (
-        <div className="lg:hidden border-t border-border/40 bg-background/95 backdrop-blur">
+        <div className="lg:hidden border-t border-hero-charcoal/30 bg-hero-charcoal/98 backdrop-blur-md">
           <div className="container-width px-4 py-4">
             <div className="grid gap-2">
               {items.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="min-h-[44px] px-3 py-3 rounded-md text-base font-medium text-foreground/90 hover:bg-secondary transition-colors"
+                  className="min-h-[44px] px-3 py-3 rounded-md text-base font-medium text-hero-cream/90 hover:bg-hero-charcoal/70 hover:text-hero-cream transition-colors"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}

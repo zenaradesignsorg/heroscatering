@@ -12,22 +12,22 @@ const WhyChooseSection = () => {
             ref={sectionRef}
             className={`text-center mb-16 animate-on-scroll-fade ${sectionVisible ? 'visible' : ''}`}
           >
-            <h2 className="heading-section text-foreground mb-4">
+          <h2 className="heading-section text-foreground mb-4">
               Why Choose Heroes Catering
-            </h2>
+          </h2>
             <div className="w-24 h-1 bg-accent mx-auto rounded-full mb-8" />
-          </div>
-          
+        </div>
+        
           {/* Main Story */}
-          <div 
+            <div 
             ref={storyRef}
             className={`mb-12 text-center animate-on-scroll ${storyVisible ? 'visible' : ''}`}
-          >
+            >
             <p className="text-lg sm:text-xl text-foreground leading-relaxed max-w-3xl mx-auto font-body">
               We cook the way our families taught us — with real spices, fresh ingredients, and recipes that have been in our community for generations. Every morning, we start from scratch. No shortcuts, no compromises.
             </p>
-          </div>
-
+              </div>
+              
           {/* Features in a more unique layout */}
           <div className="space-y-8 sm:space-y-12">
             <FeatureItem 
@@ -38,7 +38,7 @@ const WhyChooseSection = () => {
               align="left"
               index={0}
             />
-            
+              
             <FeatureItem 
               number="02" 
               color="primary" 
@@ -65,7 +65,7 @@ const WhyChooseSection = () => {
               align="right"
               index={3}
             />
-          </div>
+            </div>
         </div>
       </div>
     </section>

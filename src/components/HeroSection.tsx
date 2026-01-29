@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <section
       id="top"
-      className="relative pt-16 min-h-[calc(100svh-4rem)] min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden scroll-mt-24"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden scroll-mt-24 pt-16 pb-20"
     >
       {/* Background Image */}
       <div 
@@ -22,15 +22,14 @@ const HeroSection = () => {
       <div className="absolute inset-0 pattern-overlay opacity-20" />
       
       {/* Content */}
-      <div className="relative z-10 container-width section-padding text-center">
+      <div className="relative z-10 container-width px-4 py-8 sm:py-12 md:py-16 text-center flex-1 flex flex-col justify-center">
         {/* Logo / Brand */}
-        <div className="mb-8 md:mb-12 animate-fade-in px-4" style={{ animationDelay: "0.1s" }}>
+        <div className="mb-6 sm:mb-8 md:mb-12 animate-fade-in" style={{ animationDelay: "0.1s" }}>
           <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-display font-bold tracking-tight leading-tight" style={{ 
             textShadow: '0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.9), 2px 2px 4px rgba(255, 255, 255, 0.1)',
             letterSpacing: '-0.02em',
-            WebkitTextStroke: '1px rgba(0, 0, 0, 0.3)',
-            textStroke: '1px rgba(0, 0, 0, 0.3)'
-          }}>
+            WebkitTextStroke: '1px rgba(0, 0, 0, 0.3)'
+          } as React.CSSProperties}>
             <span className="text-primary">Heroes</span>{' '}
             <span className="text-accent">Catering</span>
           </h2>
@@ -38,7 +37,7 @@ const HeroSection = () => {
         
         {/* Main Headline */}
         <h1 
-          className="heading-display text-primary-foreground mb-4 md:mb-6 px-4 animate-fade-in-up"
+          className="heading-display text-primary-foreground mb-3 sm:mb-4 md:mb-6 animate-fade-in-up"
           style={{ animationDelay: "0.2s" }}
         >
           Authentic Tamil &<br className="hidden sm:block" /> South Asian Cuisine
@@ -46,7 +45,7 @@ const HeroSection = () => {
         
         {/* Subheading */}
         <p 
-          className="text-base sm:text-lg md:text-xl text-hero-cream/90 max-w-2xl mx-auto mb-8 md:mb-10 px-4 animate-fade-in-up font-body"
+          className="text-base sm:text-lg md:text-xl text-hero-cream/90 max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-10 animate-fade-in-up font-body"
           style={{ animationDelay: "0.4s" }}
         >
           Freshly prepared meals, short eats, and refreshing South Asian beverages — made with real flavor.
@@ -54,7 +53,7 @@ const HeroSection = () => {
         
         {/* CTA Buttons */}
         <div 
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 animate-fade-in-up w-full sm:w-auto"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-fade-in-up w-full sm:w-auto"
           style={{ animationDelay: "0.6s" }}
         >
           <Button 
@@ -94,7 +93,7 @@ const HeroSection = () => {
       {/* Scroll Indicator */}
       <a 
         href="#about"
-        className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group touch-manipulation"
+        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group touch-manipulation z-20"
         aria-label="Scroll to about section"
         style={{ minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >

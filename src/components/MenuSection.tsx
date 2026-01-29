@@ -80,14 +80,14 @@ const MenuSection = () => {
             {Object.entries(menuData).map(([key, category], index) => (
               <MenuCard key={key} category={category} index={index} />
             ))}
-          </div>
+            </div>
         </div>
         
         <div className="mt-16 text-center">
           <div className="inline-block px-6 py-3 bg-background/80 backdrop-blur-sm rounded-full border border-primary/20">
             <p className="text-sm sm:text-base text-muted-foreground italic font-body">
-              Custom quantities available for catering orders
-            </p>
+          Custom quantities available for catering orders
+        </p>
           </div>
         </div>
       </div>
