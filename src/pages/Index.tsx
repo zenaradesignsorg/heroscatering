@@ -17,7 +17,7 @@ const Index = () => {
         Skip to main content
       </a>
       <Navbar />
-      <main id="main" className="min-h-screen">
+      <main id="main" className="min-h-screen overflow-x-hidden">
       <HeroSection />
       <AboutSection />
       <MenuSection />

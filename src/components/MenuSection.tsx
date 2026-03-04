@@ -108,7 +108,7 @@ const MenuCard = ({ category, index }: { category: typeof menuData.food, index: 
     >
       {/* Decorative corner accent */}
       <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-        <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-bl-full transform translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-bl-full transform -translate-y-1/2" />
       </div>
       
       {/* Category Header */}

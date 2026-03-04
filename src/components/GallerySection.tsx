@@ -151,7 +151,7 @@ const GallerySection = () => {
       {/* Lightbox Modal */}
       {lightboxOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm animate-in fade-in duration-300"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm animate-in fade-in duration-300 overflow-x-hidden overflow-y-auto"
           onClick={closeLightbox}
           role="dialog"
           aria-modal="true"
