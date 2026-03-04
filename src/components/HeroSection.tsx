@@ -6,7 +6,8 @@ const HeroSection = () => {
   return (
     <section
       id="top"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden scroll-mt-24 pt-16 pb-20"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden scroll-mt-24 pt-16 pb-20 touch-pan-y"
+      style={{ touchAction: 'pan-y' }}
     >
       {/* Background Image */}
       <div 
@@ -91,14 +92,23 @@ const HeroSection = () => {
       </div>
       
       {/* Scroll Indicator */}
-      <a 
-        href="#about"
-        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group touch-manipulation z-20"
-        aria-label="Scroll to about section"
-        style={{ minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-      >
-        <ChevronDown className="w-8 h-8 text-hero-cream/70 group-hover:text-hero-cream transition-colors" aria-hidden="true" />
-      </a>
+      <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 flex justify-center z-20 pointer-events-none">
+        <a 
+          href="#about"
+          className="animate-bounce cursor-pointer group touch-manipulation pointer-events-auto"
+          aria-label="Scroll to about section"
+          style={{ 
+            minWidth: '44px', 
+            minHeight: '44px', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            touchAction: 'manipulation'
+          }}
+        >
+          <ChevronDown className="w-8 h-8 text-hero-cream/70 group-hover:text-hero-cream transition-colors" aria-hidden="true" />
+        </a>
+      </div>
     </section>
   );
 };
