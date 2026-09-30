@@ -1,191 +1,102 @@
-import { useState } from "react";
-import { MapPin, Navigation, Loader2, Store, Clock } from "lucide-react";
+import { Navigation, Phone } from "lucide-react";
 import { Button } from "./ui/button";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import storeInterior from "@/assets/store-interior.jpg";
+import OpenBadge from "./OpenBadge";
+import Reveal from "./Reveal";
+import { cn } from "@/lib/utils";
+import { useOpenStatus } from "@/hooks/use-open-status";
+import {
+  ADDRESS_LINE_1,
+  ADDRESS_LINE_2,
+  ADDRESS_NOTE,
+  DIRECTIONS_URL,
+  HOURS,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+  formatTime,
+} from "@/lib/business";
 
-const businessHours = [
-  { day: "Sunday", hours: "10 a.m. – 8 p.m." },
-  { day: "Monday", hours: "9 a.m. – 9 p.m." },
-  { day: "Tuesday", hours: "9 a.m. – 9 p.m." },
-  { day: "Wednesday", hours: "9 a.m. – 9 p.m." },
-  { day: "Thursday", hours: "9 a.m. – 9 p.m." },
-  { day: "Friday", hours: "9 a.m. – 9 p.m." },
-  { day: "Saturday", hours: "9 a.m. – 9 p.m." },
-];
+const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(`${ADDRESS_LINE_1}, ${ADDRESS_LINE_2}`)}&output=embed`;
 
 const LocationSection = () => {
-  const [mapLoaded, setMapLoaded] = useState(false);
-  const [mapError, setMapError] = useState(false);
-  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
-  const { ref: mapRef, isVisible: mapVisible } = useScrollAnimation({ threshold: 0.2 });
-  const { ref: infoRef, isVisible: infoVisible } = useScrollAnimation({ threshold: 0.2 });
-  const { ref: hoursRef, isVisible: hoursVisible } = useScrollAnimation({ threshold: 0.2 });
-  const { ref: storeRef, isVisible: storeVisible } = useScrollAnimation({ threshold: 0.2 });
-  
-  // Address: 5215 Finch Ave E, Scarborough, ON M1S 0C2
-  const address = "5215 Finch Ave E, Scarborough, ON M1S 0C2";
-  const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
-  
+  const status = useOpenStatus();
+
   return (
-    <section id="location" className="section-padding bg-secondary scroll-mt-24">
-      <div className="container-width">
-        <div 
-          ref={sectionRef}
-          className={`text-center mb-12 animate-on-scroll-fade ${sectionVisible ? 'visible' : ''}`}
-        >
-          <h2 className="heading-section text-foreground mb-4">
-            Visit Us
-          </h2>
-          <div className="w-24 h-1 bg-accent mx-auto rounded-full" />
-        </div>
-        
-        {/* Map and Location Info Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 items-center mb-12">
-          {/* Map */}
-          <div 
-            ref={mapRef}
-            className={`aspect-video lg:aspect-square rounded-2xl overflow-hidden shadow-lg order-2 lg:order-1 relative bg-muted animate-on-scroll-slide-left ${mapVisible ? 'visible' : ''}`}
-          >
-            {/* Loading Placeholder */}
-            {!mapLoaded && !mapError && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-muted to-muted/50 z-10">
-                <Loader2 className="w-8 h-8 text-primary animate-spin mb-4" />
-                <p className="text-sm text-muted-foreground font-medium">Loading map...</p>
-              </div>
-            )}
-            
-            {/* Error State */}
-            {mapError && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-muted to-muted/50 z-10 p-4">
-                <p className="text-sm text-muted-foreground font-medium text-center mb-4">
-                  Unable to load map. Please use the "Get Directions" button below.
-                </p>
-              </div>
-            )}
-            
-            <iframe
-              src={mapUrl}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
-              title="Heroes Catering Location"
-              className="w-full h-full"
-              onLoad={() => {
-                setMapLoaded(true);
-                setMapError(false);
-              }}
-              onError={() => {
-                setMapError(true);
-                setMapLoaded(false);
-              }}
-            />
-          </div>
-          
-          {/* Location Info */}
-          <div 
-            ref={infoRef}
-            className={`text-center lg:text-left order-1 lg:order-2 animate-on-scroll-slide-right ${infoVisible ? 'visible' : ''}`}
-          >
-            <div className="inline-flex items-center gap-2 text-primary mb-4">
-              <MapPin className="w-5 h-5" aria-hidden="true" />
-              <span className="font-semibold">Our Location</span>
-            </div>
-            
-            <h3 className="font-display text-2xl font-bold text-foreground mb-4">
-              Heroes Catering
-            </h3>
-            
-            <p className="text-base sm:text-lg text-foreground mb-2">
-              5215 Finch Ave E
+    <section id="location" className="bg-secondary py-20 sm:py-28">
+      <div className="container-width grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+        <Reveal>
+          <h2 className="heading-section text-primary">Visit us</h2>
+
+          <address className="mt-8 not-italic">
+            <p className="font-display text-3xl font-semibold leading-tight text-foreground">
+              {ADDRESS_LINE_1}
+              <br />
+              {ADDRESS_LINE_2}
             </p>
-            <p className="text-base sm:text-lg text-foreground mb-4 sm:mb-6">
-              Scarborough, ON M1S 0C2
-            </p>
-            
-            <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">
-              Conveniently located in GTA Mall on the 2nd floor — dine in or take out.
-            </p>
-            
-            <Button 
-              variant="default"
-              size="lg"
-              asChild
-              className="w-full sm:w-auto min-h-[44px]"
-            >
-              <a 
-                href="https://www.google.com/maps/search/?api=1&query=5215+Finch+Ave+E+Scarborough+ON+M1S+0C2"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center"
-                aria-label="Get directions to Heroes Catering on Google Maps"
-              >
-                <Navigation className="mr-2 h-5 w-5" aria-hidden="true" />
-                Get Directions
+            <p className="mt-3 text-muted-foreground">{ADDRESS_NOTE}. Dine in or take out.</p>
+          </address>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button variant="hero" size="lg" asChild>
+              <a href={DIRECTIONS_URL} target="_blank" rel="noopener noreferrer">
+                <Navigation className="icon-nudge" aria-hidden="true" />
+                Get directions
+              </a>
+            </Button>
+            <Button variant="heroOutline" size="lg" asChild>
+              <a href={PHONE_HREF}>
+                <Phone className="icon-ring" aria-hidden="true" />
+                {PHONE_DISPLAY}
               </a>
             </Button>
           </div>
-        </div>
-        
-        {/* Business Hours and Store Image */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Business Hours - Left */}
-          <div 
-            ref={hoursRef}
-            className={`bg-background/50 rounded-2xl p-6 sm:p-8 border border-primary/10 animate-on-scroll-slide-left ${hoursVisible ? 'visible' : ''}`}
-          >
-            <div className="inline-flex items-center gap-2 text-primary mb-6">
-              <Clock className="w-5 h-5" aria-hidden="true" />
-              <span className="font-semibold text-lg font-display">Hours</span>
+
+          <div className="mt-12">
+            <div className="flex flex-wrap items-baseline justify-between gap-2 border-b pb-3">
+              <h3 className="font-display text-2xl font-semibold text-foreground">Hours</h3>
+              <OpenBadge status={status} />
             </div>
-            
-            <div className="space-y-2">
-              {businessHours.map((schedule) => (
-                <div 
-                  key={`hours-${schedule.day.toLowerCase()}`}
-                  className="flex justify-between items-center py-3 px-2 rounded-lg hover:bg-primary/5 transition-colors"
-                >
-                  <span className="text-foreground font-medium text-base">{schedule.day}</span>
-                  <span className="text-muted-foreground font-body">{schedule.hours}</span>
-                </div>
-              ))}
-            </div>
+            <table className="w-full text-left">
+              <caption className="sr-only">Opening hours</caption>
+              <tbody>
+                {HOURS.map((h, i) => {
+                  const isToday = i === status.todayIndex;
+                  return (
+                    <tr
+                      key={h.day}
+                      className={cn("border-b border-border/70", isToday && "font-semibold text-primary")}
+                      aria-current={isToday ? "date" : undefined}
+                    >
+                      <th scope="row" className={cn("py-3", isToday ? "font-semibold" : "font-normal")}>
+                        {h.day}
+                        {isToday && (
+                          <span className="ml-2 text-sm font-medium text-muted-foreground">today</span>
+                        )}
+                      </th>
+                      <td className="py-3 text-right tabular-nums">
+                        {formatTime(h.open)} – {formatTime(h.close)}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
-          
-          {/* Store Interior Image - Right */}
-          <div 
-            ref={storeRef}
-            className={`animate-on-scroll-slide-right ${storeVisible ? 'visible' : ''}`}
-          >
-            <div className="inline-flex items-center gap-2 text-primary mb-4">
-              <Store className="w-5 h-5" aria-hidden="true" />
-              <span className="font-semibold font-display">Our Store</span>
-            </div>
-            
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img 
-                src={storeInterior}
-                alt="Heroes Catering store interior in GTA Mall showing food display counter"
-                className="w-full h-auto object-cover"
-                loading="lazy"
-                width="800"
-                height="600"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                }}
-              />
-            </div>
-            
-            <p className="text-sm text-muted-foreground mt-4 leading-relaxed">
-              Visit us at our location in GTA Mall — see our fresh food display and authentic South Asian cuisine
-            </p>
-          </div>
-        </div>
+        </Reveal>
+
+        <Reveal
+          variant="image"
+          delay={150}
+          className="min-h-[22rem] overflow-hidden rounded-[1.75rem] bg-muted lg:min-h-0"
+        >
+          <iframe
+            src={mapUrl}
+            title="Map showing Heroes Catering at 5215 Finch Ave E, Scarborough"
+            className="h-full min-h-[22rem] w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+        </Reveal>
       </div>
     </section>
   );

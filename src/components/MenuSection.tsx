@@ -1,153 +1,138 @@
-import { 
-  UtensilsCrossed, 
-  Cookie, 
-  GlassWater, 
-  Users 
-} from "lucide-react";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import type { CSSProperties } from "react";
+import { Phone } from "lucide-react";
+import { Button } from "./ui/button";
+import Reveal from "./Reveal";
+import { PHONE_HREF } from "@/lib/business";
+import biryaniImage from "@/assets/chickenleg2.webp";
+import vadaiImage from "@/assets/gallery12.webp";
+import faloodaImage from "@/assets/falooda-gallery2.webp";
 
-const menuData = {
-  food: {
+type MenuItem = { name: string; note?: string };
+
+const categories: {
+  title: string;
+  image: string;
+  imageAlt: string;
+  items: MenuItem[];
+}[] = [
+  {
     title: "Food",
-    icon: UtensilsCrossed,
+    image: biryaniImage,
+    imageAlt: "Chicken biryani with a spiced chicken leg and boiled egg",
     items: [
-      "Kothu Roti (Chicken, Mutton, Egg, Vegetable)",
-      "Fried Rice",
-      "Biryani",
-      "Chicken Wings"
-    ]
+      { name: "Kothu Roti", note: "Chicken, mutton, egg or vegetable" },
+      { name: "Biryani" },
+      { name: "Fried Rice" },
+      { name: "Chicken Wings" },
+    ],
   },
-  shortEats: {
-    title: "Short Eats",
-    icon: Cookie,
+  {
+    title: "Short eats",
+    image: vadaiImage,
+    imageAlt: "Ulundu vadai and paruppu vadai with coconut chutney and red chutney",
     items: [
-      "Samosas",
-      "Mutton Rolls",
-      "Veggie Rolls",
-      "Fish Buns",
-      "Hand Murukku",
-      "Pepper Thenkuzhal",
-      "Mullu Murukku",
-      "Mini Tapioca"
-    ]
+      { name: "Samosas" },
+      { name: "Mutton Rolls" },
+      { name: "Veggie Rolls" },
+      { name: "Fish Buns" },
+      { name: "Hand Murukku" },
+      { name: "Pepper Thenkuzhal" },
+      { name: "Mullu Murukku" },
+      { name: "Mini Tapioca" },
+    ],
   },
-  drinks: {
+  {
     title: "Drinks",
-    icon: GlassWater,
+    image: faloodaImage,
+    imageAlt: "Two glasses of rose falooda topped with ice cream and pistachios",
     items: [
-      "Mango Shake",
-      "Falooda",
-      "Lassi",
-      "Bru Coffee",
-      "Masala Tea",
-      "Soft Drinks"
-    ]
+      { name: "Mango Shake" },
+      { name: "Falooda" },
+      { name: "Lassi" },
+      { name: "Bru Coffee" },
+      { name: "Masala Tea" },
+      { name: "Soft Drinks" },
+    ],
   },
-  catering: {
-    title: "Catering Options",
-    icon: Users,
-    items: [
-      "Combination of menu items available",
-      "Minimum quantities required"
-    ]
-  }
-};
+];
 
-const MenuSection = () => {
-  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
+const MenuSection = () => (
+  <section
+    id="menu"
+    className="on-dark relative overflow-hidden bg-primary py-20 text-primary-foreground sm:py-28"
+  >
+    <div className="pattern-overlay absolute inset-0 opacity-60" aria-hidden="true" />
 
-  return (
-    <section id="menu" className="section-padding bg-secondary/30 relative overflow-hidden scroll-mt-24">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-primary rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-64 h-64 bg-accent rounded-full blur-3xl" />
-      </div>
-      
-      <div className="container-width relative z-10">
-        <div 
-          ref={sectionRef}
-          className={`text-center mb-16 animate-on-scroll-fade ${sectionVisible ? 'visible' : ''}`}
-        >
-          <h2 className="heading-section text-foreground mb-4">
-            Menu Highlights
-          </h2>
-          <div className="w-24 h-1 bg-accent mx-auto rounded-full" />
-        </div>
-        
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-            {Object.entries(menuData).map(([key, category], index) => (
-              <MenuCard key={key} category={category} index={index} />
-            ))}
-            </div>
-        </div>
-        
-        <div className="mt-16 text-center">
-          <div className="inline-block px-6 py-3 bg-background/80 backdrop-blur-sm rounded-full border border-primary/20">
-            <p className="text-sm sm:text-base text-muted-foreground italic font-body">
-          Custom quantities available for catering orders
+    <div className="container-width relative">
+      <Reveal className="flex flex-col gap-4 border-b border-primary-foreground/20 pb-10 md:flex-row md:items-end md:justify-between">
+        <h2 className="heading-section text-primary-foreground">Menu highlights</h2>
+        <p className="max-w-sm text-primary-foreground/75">
+          A few of the favourites. Ask at the counter for the day's curries and specials.
         </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+      </Reveal>
 
-const MenuCard = ({ category, index }: { category: typeof menuData.food, index: number }) => {
-  const { ref: cardRef, isVisible: cardVisible } = useScrollAnimation({ 
-    threshold: 0.1 
-  });
-
-  return (
-    <div 
-      ref={cardRef}
-      className={`relative bg-background/80 backdrop-blur-sm rounded-xl p-6 sm:p-7 border border-primary/10 shadow-lg hover:shadow-xl transition-all duration-300 animate-on-scroll-scale ${cardVisible ? 'visible' : ''}`}
-      style={{ transitionDelay: `${index * 0.1}s` }}
-    >
-      {/* Decorative corner accent */}
-      <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-        <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-bl-full transform -translate-y-1/2" />
-      </div>
-      
-      {/* Category Header */}
-      <div className="mb-5 sm:mb-6 relative">
-        <div className="inline-flex items-center gap-3 mb-3">
-          <div className="w-1 h-8 sm:h-10 bg-gradient-to-b from-primary to-accent rounded-full" />
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-            <category.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-          </div>
-          <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-            {category.title}
-          </h3>
-        </div>
-        <div className="h-px w-full bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
-      </div>
-      
-      {/* Menu Items */}
-      <div className="space-y-3 sm:space-y-3.5">
-        {category.items.map((item, itemIndex) => {
-          const CategoryIcon = category.icon;
-          return (
-            <div 
-              key={`${category.title.toLowerCase()}-${item.substring(0, 20).replace(/\s+/g, '-').toLowerCase()}-${itemIndex}`}
-              className="flex items-start gap-3 group"
+      <div className="grid gap-14 pt-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+        {categories.map((category, col) => (
+          <div
+            key={category.title}
+            className={category.items.length > 6 ? "md:row-span-2 lg:row-span-1" : ""}
+          >
+            <Reveal variant="image" delay={col * 120} className="rounded-2xl [--reveal-radius:1rem]">
+              <img
+                src={category.image}
+                alt={category.imageAlt}
+                className="aspect-[3/2] w-full rounded-2xl object-cover"
+                width={600}
+                height={400}
+                loading="lazy"
+                decoding="async"
+              />
+            </Reveal>
+            <Reveal
+              as="h3"
+              delay={col * 120 + 150}
+              className="mt-7 font-display text-4xl font-semibold italic"
             >
-              <div className="flex-shrink-0 mt-0.5">
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-300 group-hover:scale-110">
-                  <CategoryIcon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-foreground leading-relaxed font-body group-hover:text-primary transition-colors duration-300 flex-1 pt-1">
-                {item}
-              </p>
-            </div>
-          );
-        })}
+              {category.title}
+            </Reveal>
+            {/* Items cascade in like a menu being written out */}
+            <Reveal as="ul" variant="stagger" delay={col * 120 + 220} className="mt-4">
+              {category.items.map((item, i) => (
+                <li
+                  key={item.name}
+                  style={{ "--i": i } as CSSProperties}
+                  className="group/item border-b border-primary-foreground/15 py-3 last:border-0"
+                >
+                  <span className="block transition-transform duration-300 ease-out group-hover/item:translate-x-1.5">
+                    <span className="font-display text-2xl font-medium leading-tight">{item.name}</span>
+                    {item.note && (
+                      <span className="mt-0.5 block text-sm text-primary-foreground/70">{item.note}</span>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </Reveal>
+          </div>
+        ))}
       </div>
+
+      <Reveal className="mt-16 flex flex-col gap-6 rounded-2xl bg-hero-green-deep/60 p-7 sm:p-9 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h3 className="font-display text-3xl font-semibold">Feeding a crowd?</h3>
+          <p className="mt-2 max-w-xl text-primary-foreground/80">
+            Any of these dishes can be combined into a catering order, in custom quantities. Minimum
+            quantities apply.
+          </p>
+        </div>
+        <Button variant="heroInverse" size="lg" asChild className="shrink-0">
+          <a href={PHONE_HREF}>
+            <Phone className="icon-ring" aria-hidden="true" />
+            Call to order catering
+          </a>
+        </Button>
+      </Reveal>
     </div>
-  );
-};
+  </section>
+);
 
 export default MenuSection;

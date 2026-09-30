@@ -1,73 +1,83 @@
-import { Phone, Users, Briefcase, PartyPopper, Heart } from "lucide-react";
+import type { CSSProperties } from "react";
+import { Phone, Users, Briefcase, PartyPopper, ChefHat } from "lucide-react";
 import { Button } from "./ui/button";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import Reveal from "./Reveal";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/business";
+import trayImage from "@/assets/gallery10.webp";
+import eggRotiImage from "@/assets/gallery11.webp";
 
-const cateringFeatures = [
+const occasions = [
   { icon: Users, text: "Family gatherings" },
   { icon: Briefcase, text: "Corporate lunches" },
-  { icon: PartyPopper, text: "Parties & special events" },
-  { icon: Heart, text: "Custom menu options" },
+  { icon: PartyPopper, text: "Parties and special events" },
+  { icon: ChefHat, text: "Custom menu options" },
 ];
 
-const CateringSection = () => {
-  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
-
-  return (
-    <section id="catering" className="section-padding bg-primary relative overflow-hidden scroll-mt-24">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 pattern-overlay opacity-10" />
-      
-      <div className="container-width relative z-10">
-        <div 
-          ref={sectionRef}
-          className={`max-w-3xl mx-auto text-center animate-on-scroll-fade ${sectionVisible ? 'visible' : ''}`}
-        >
-          <h2 className="heading-section text-primary-foreground mb-6">
-            Catering for Any Occasion
-          </h2>
-          
-          <div className="w-24 h-1 bg-hero-cream/40 mx-auto mb-10 rounded-full" />
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-10">
-            {cateringFeatures.map((feature, index) => {
-              const { ref: featureRef, isVisible: featureVisible } = useScrollAnimation({ threshold: 0.2 });
-              return (
-              <div 
-                key={index}
-                  ref={featureRef}
-                  className={`flex flex-col items-center gap-2 sm:gap-3 p-3 sm:p-4 animate-on-scroll-scale ${featureVisible ? 'visible' : ''}`}
-                  style={{ transitionDelay: `${index * 0.1}s` }}
-              >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-foreground/10 flex items-center justify-center">
-                    <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
-                </div>
-                  <span className="text-primary-foreground/90 text-xs sm:text-sm font-medium text-center">
-                  {feature.text}
-                </span>
-              </div>
-              );
-            })}
+const CateringSection = () => (
+  <section id="catering" className="py-20 sm:py-28">
+    <div className="container-width grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-20">
+      <div className="relative order-2 pb-12 lg:order-1 lg:pb-0">
+        <Reveal variant="image">
+          <img
+            src={trayImage}
+            alt="A full catering tray topped with fried green chillies, curry leaves and onions"
+            className="aspect-[4/3] w-full rounded-[1.75rem] object-cover"
+            width={1600}
+            height={1067}
+            loading="lazy"
+            decoding="async"
+          />
+        </Reveal>
+        {/* Same tilted print as the hero, leaning the other way */}
+        <Reveal delay={450} className="absolute -bottom-2 right-4 w-32 sm:w-44 lg:-bottom-10 lg:-right-8">
+          <div className="rotate-3 transition-transform duration-500 ease-out hover:rotate-0 hover:scale-105">
+            <img
+              src={eggRotiImage}
+              alt="Egg roti garnished with curry leaves"
+              className="photo-print aspect-square w-full"
+              width={400}
+              height={400}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
-          
-          <Button
-            variant="heroInverse"
-            size="lg"
-            asChild
-            className="w-full sm:w-auto min-h-[44px]"
-          >
-            <a 
-              href="tel:+14162869334" 
-              className="flex items-center justify-center"
-              aria-label="Call Heroes Catering for catering orders at (416) 286-9334"
+        </Reveal>
+      </div>
+
+      <Reveal className="order-1 lg:order-2">
+        <h2 className="heading-section text-primary">Catering for any occasion</h2>
+        <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-muted-foreground">
+          From a birthday at home to lunch for the office, we'll cook the dishes your guests already love.
+          Call us with your date, number of guests and what you'd like on the table.
+        </p>
+
+        <Reveal as="ul" variant="stagger" delay={200} className="mt-8 grid gap-x-6 gap-y-4 sm:grid-cols-2">
+          {occasions.map(({ icon: Icon, text }, i) => (
+            <li
+              key={text}
+              className="flex items-center gap-3 font-medium text-foreground"
+              style={{ "--i": i * 1.5 } as CSSProperties}
             >
-              <Phone className="mr-2 h-5 w-5" aria-hidden="true" />
-              Call for Catering Orders
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted text-primary">
+                <Icon className="h-5 w-5" aria-hidden="true" />
+              </span>
+              {text}
+            </li>
+          ))}
+        </Reveal>
+
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+          <Button variant="hero" size="lg" asChild>
+            <a href={PHONE_HREF}>
+              <Phone className="icon-ring" aria-hidden="true" />
+              Call {PHONE_DISPLAY}
             </a>
           </Button>
+          <p className="text-sm text-muted-foreground">Minimum quantities apply.</p>
         </div>
-      </div>
-    </section>
-  );
-};
+      </Reveal>
+    </div>
+  </section>
+);
 
 export default CateringSection;

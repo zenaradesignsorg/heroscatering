@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -14,8 +15,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Cormorant Garamond', 'serif'],
-        body: ['Poppins', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        body: ['Poppins', 'system-ui', '-apple-system', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -54,8 +55,10 @@ export default {
         hero: {
           green: "hsl(var(--hero-green))",
           "green-light": "hsl(var(--hero-green-light))",
+          "green-deep": "hsl(var(--hero-green-deep))",
           red: "hsl(var(--hero-red))",
           "red-dark": "hsl(var(--hero-red-dark))",
+          "red-light": "hsl(var(--hero-red-light))",
           cream: "hsl(var(--hero-cream))",
           beige: "hsl(var(--hero-beige))",
           charcoal: "hsl(var(--hero-charcoal))",
@@ -75,6 +78,10 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      transitionTimingFunction: {
+        // Matches --ease-out in index.css: fast start, long gentle settle
+        "out-soft": "cubic-bezier(0.22, 1, 0.36, 1)",
       },
       keyframes: {
         "accordion-down": {
@@ -112,5 +119,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate],
 } satisfies Config;

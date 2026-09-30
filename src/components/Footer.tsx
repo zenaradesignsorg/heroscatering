@@ -1,77 +1,68 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+import {
+  ADDRESS_LINE_1,
+  ADDRESS_LINE_2,
+  ADDRESS_NOTE,
+  EMAIL,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+} from "@/lib/business";
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  
-  return (
-    <footer className="bg-hero-charcoal py-12 px-4">
-      <div className="container-width">
-        <div className="text-center">
-          {/* Logo */}
-          <h3 className="font-display text-2xl font-bold text-hero-cream mb-2">
-            Heroes Catering
-          </h3>
-          
-          {/* Tagline */}
-          <p className="text-hero-cream/60 mb-8 italic">
-            Authentic South Asian Taste
+const Footer = () => (
+  <footer className="on-dark bg-hero-charcoal py-14 text-hero-cream">
+    <div className="container-width">
+      <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div>
+          <p className="font-display text-3xl font-bold">
+            <span className="text-hero-green-light">Heroes</span>{" "}
+            <span className="text-hero-red-light">Catering</span>
           </p>
-          
-          {/* Contact Info */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center text-hero-cream/70 text-xs sm:text-sm mb-6 sm:mb-8 px-4">
-            <a 
-              href="tel:+14162869334"
-              className="flex items-center gap-2 hover:text-hero-cream transition-colors touch-manipulation min-h-[44px]"
-              aria-label="Call Heroes Catering at (416) 286-9334"
-            >
-              <Phone className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
-              <span className="whitespace-nowrap">(416) 286-9334</span>
-            </a>
-            
-            <span className="hidden sm:inline text-hero-cream/30" aria-hidden="true">|</span>
-            
-            <a 
-              href="mailto:info@heroscatering.com"
-              className="flex items-center gap-2 hover:text-hero-cream transition-colors touch-manipulation min-h-[44px] break-all sm:break-normal"
-              aria-label="Email Heroes Catering at info@heroscatering.com"
-            >
-              <Mail className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
-              <span>info@heroscatering.com</span>
-            </a>
-            
-            <span className="hidden sm:inline text-hero-cream/30" aria-hidden="true">|</span>
-            
-            <div className="flex items-center gap-2 text-center sm:text-left">
-              <MapPin className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
-              <span className="break-words">5215 Finch Ave E, Scarborough, ON M1S 0C2</span>
-            </div>
-          </div>
-          
-          {/* Divider */}
-          <div className="w-24 h-px bg-hero-cream/20 mx-auto mb-6" />
-          
-          {/* Copyright */}
-          <p className="text-hero-cream/40 text-xs mb-3">
-            © {currentYear} Heroes Catering. All rights reserved.
-          </p>
-          
-          {/* Design Credit */}
-          <p className="text-hero-cream/30 text-xs">
-            Designed by{' '}
-            <a 
-              href="https://zenaradesigns.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-hero-cream/50 hover:text-hero-cream transition-colors underline underline-offset-2"
-              aria-label="Visit Zenara Designs website (opens in new tab)"
-            >
-              Zenara Designs
-            </a>
-          </p>
+          <p className="mt-2 text-hero-cream/70">Authentic Tamil and South Asian food in Scarborough.</p>
+        </div>
+
+        <div>
+          <h2 className="font-display text-xl font-semibold">Contact</h2>
+          <ul className="mt-3 space-y-2 text-hero-cream/80">
+            <li>
+              <a href={PHONE_HREF} className="link-draw hover:text-hero-cream">
+                {PHONE_DISPLAY}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${EMAIL}`} className="link-draw break-all hover:text-hero-cream">
+                {EMAIL}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="font-display text-xl font-semibold">Find us</h2>
+          <address className="mt-3 not-italic text-hero-cream/80">
+            {ADDRESS_NOTE}
+            <br />
+            {ADDRESS_LINE_1}
+            <br />
+            {ADDRESS_LINE_2}
+          </address>
         </div>
       </div>
-    </footer>
-  );
-};
+
+      <div className="mt-12 flex flex-col gap-2 border-t border-hero-cream/15 pt-6 text-sm text-hero-cream/60 sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} Heroes Catering. All rights reserved.</p>
+        <p>
+          Designed by{" "}
+          <a
+            href="https://zenaradesigns.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block py-0.5 underline underline-offset-2 hover:text-hero-cream"
+          >
+            Zenara Designs
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

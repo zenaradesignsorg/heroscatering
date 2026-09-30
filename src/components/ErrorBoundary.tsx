@@ -1,4 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/business";
 
 interface Props {
   children: ReactNode;
@@ -26,20 +27,22 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-background p-4">
-          <div className="max-w-md w-full text-center">
-            <h1 className="text-2xl font-bold text-foreground mb-4">
-              Something went wrong
-            </h1>
-            <p className="text-muted-foreground mb-6">
-              We're sorry, but something unexpected happened. Please refresh the page to try again.
+        <div className="flex min-h-screen items-center justify-center bg-secondary p-5">
+          <div className="w-full max-w-md text-center">
+            <h1 className="font-display text-4xl font-semibold text-primary">This page didn't load</h1>
+            <p className="mt-4 text-muted-foreground">
+              Reload to try again. To order now, call us at{" "}
+              <a href={PHONE_HREF} className="font-semibold text-foreground underline underline-offset-2">
+                {PHONE_DISPLAY}
+              </a>
+              .
             </p>
             <button
+              type="button"
               onClick={() => window.location.reload()}
-              className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-              aria-label="Reload page"
+              className="mt-8 h-12 rounded-full bg-accent px-7 font-semibold text-accent-foreground transition-colors hover:bg-hero-red-dark"
             >
-              Refresh Page
+              Reload page
             </button>
           </div>
         </div>
