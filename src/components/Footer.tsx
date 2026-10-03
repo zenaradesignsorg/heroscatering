@@ -2,7 +2,6 @@ import {
   ADDRESS_LINE_1,
   ADDRESS_LINE_2,
   ADDRESS_NOTE,
-  EMAIL,
   PHONE_DISPLAY,
   PHONE_HREF,
 } from "@/lib/business";
@@ -25,11 +24,6 @@ const Footer = () => (
             <li>
               <a href={PHONE_HREF} className="link-draw hover:text-hero-cream">
                 {PHONE_DISPLAY}
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${EMAIL}`} className="link-draw break-all hover:text-hero-cream">
-                {EMAIL}
               </a>
             </li>
           </ul>

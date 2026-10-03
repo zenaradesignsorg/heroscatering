@@ -1,6 +1,5 @@
 export const PHONE_DISPLAY = "(416) 286-9334";
 export const PHONE_HREF = "tel:+14162869334";
-export const EMAIL = "info@heroscatering.com";
 export const ADDRESS_LINE_1 = "5215 Finch Ave E";
 export const ADDRESS_LINE_2 = "Scarborough, ON M1S 0C2";
 export const ADDRESS_NOTE = "GTA Mall, 2nd floor";
