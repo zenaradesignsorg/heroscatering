@@ -25,19 +25,19 @@ Vercel should auto-detect these settings, but verify:
 
 1. In your Vercel project dashboard, go to **Settings** → **Domains**
 2. Click **"Add Domain"**
-3. Enter your domain: `heroscatering.com`
+3. Enter your domain: `heroes-catering.com`
 4. Vercel will show you DNS records to add
 
 ### 4. Configure DNS Records
 
 Add these DNS records at your domain registrar (where you bought the domain):
 
-**For apex domain (heroscatering.com):**
+**For apex domain (heroes-catering.com):**
 - **Type**: `A`
 - **Name**: `@` (or leave blank)
 - **Value**: `76.76.21.21` (Vercel's IP - verify this is current in Vercel dashboard)
 
-**For www subdomain (www.heroscatering.com):**
+**For www subdomain (www.heroes-catering.com):**
 - **Type**: `CNAME`
 - **Name**: `www`
 - **Value**: `cname.vercel-dns.com` (or the value shown in Vercel dashboard)
@@ -67,7 +67,7 @@ Vercel automatically redirects HTTP → HTTPS, so no additional configuration ne
 ### 7. Verify SSL is Working
 
 After deployment:
-1. Visit `https://heroscatering.com` (note the `https://`)
+1. Visit `https://heroes-catering.com` (note the `https://`)
 2. Check browser address bar for padlock icon 🔒
 3. Test SSL: [SSL Labs](https://www.ssllabs.com/ssltest/) or [Security Headers](https://securityheaders.com/)
 
